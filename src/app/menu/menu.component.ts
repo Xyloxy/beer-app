@@ -13,8 +13,16 @@ export class MenuComponent implements OnInit {
   typeControl = new FormControl('', Validators.required);
 
   constructor(public settings: SettingsVariablesService, public color: ColorVariablesService) {
-    this.amountControl.setValue(15)
-    this.typeControl.setValue(this.settings.getTypes()[0])
+    this.amountControl.setValue(settings.getCurrentAmountToLoad())
+    this.typeControl.setValue(this.settings.getCurrentTypeFilter())
+    
+    this.amountControl.valueChanges.subscribe(value => {
+      this.settings.setCurrentAmountToLoad(value)
+    })
+
+    this.typeControl.valueChanges.subscribe(value => {
+      this.settings.setCurrentTypeFilter(value)
+    })
   }
 
   ngOnInit(): void {

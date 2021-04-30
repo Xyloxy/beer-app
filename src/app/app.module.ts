@@ -37,6 +37,7 @@ import { BeerCardComponent } from './beer-card/beer-card.component';
     MatMenuModule,
     MatSelectModule,
     MatCardModule,
+    MatCardModule,
     
     FormsModule,
     ReactiveFormsModule
