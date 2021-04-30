@@ -19,4 +19,20 @@ export class BeerCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * iconClick()
+   * 
+   * Fullscreens icon
+   * 
+   * @returns void
+   */
+  iconClick(icon: HTMLElement): void {
+    if (icon.classList.contains("icon_fullscreen")) {
+      icon.classList.remove("icon_fullscreen")
+    }
+    else {
+      icon.classList.add("icon_fullscreen")
+    }
+  }
+
 }

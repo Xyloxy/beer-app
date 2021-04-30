@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,12 @@ export class ColorVariablesService {
   // Contains currect theme of the website ("primary" / "secondary")
   private current_color: string = "secondary"
 
-  constructor() { }
+  constructor(private local: LocalStorageService) {
+    let data: any = this.local.loadOptions("colorMode")
+    if (data != undefined) {
+      this.current_color = data.color
+    }
+  }
 
   /**
    * swapColor()
@@ -24,6 +30,7 @@ export class ColorVariablesService {
     else {
       this.current_color = "secondary"
     }
+    this.local.saveOptions("colorMode", {color: this.current_color})
   }
 
   /**

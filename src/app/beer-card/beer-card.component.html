@@ -1,6 +1,6 @@
 <mat-card *ngIf="beer != null" class="card_no_bg">
     <mat-card-header>
-        <img mat-card-avatar [src]="beer.thumbnail_url" alt="{{beer.name}} picture">
+        <img mat-card-avatar [src]="beer.thumbnail_url" alt="{{beer.name}} picture" (click)="iconClick(icon)" #icon>
         <mat-card-title>{{beer.name}} - {{beer.price_per_litre}}$ per litre</mat-card-title>
         <mat-card-subtitle>{{beer.type}}</mat-card-subtitle>
     </mat-card-header>

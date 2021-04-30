@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,12 @@ export class SettingsVariablesService {
   private type_filter: Array<String> = ["Name", "Price", "Type"]
   private current_type_filter: String = "Name"
 
-  constructor() { }
+  constructor(private local: LocalStorageService) {
+    let data: any = this.local.loadOptions("settings")
+    if (data != undefined) {
+      this.current_to_load = data.amount
+    }
+  }
 
   /**
    * amountToLoad()
@@ -44,6 +50,13 @@ export class SettingsVariablesService {
    */
   public setCurrentAmountToLoad(n: number): void {
     this.current_to_load = n
+    this.local.saveOptions(
+      "settings",
+      {
+        amount: this.current_to_load,
+        filter: this.current_type_filter
+      }
+    )
   }
 
   /**
@@ -66,6 +79,13 @@ export class SettingsVariablesService {
    */
   public setCurrentTypeFilter(n: String): void {
     this.current_type_filter = n
+    this.local.saveOptions(
+      "settings",
+      {
+        amount: this.current_to_load,
+        filter: this.current_type_filter
+      }
+    )
   }
 
   /**
