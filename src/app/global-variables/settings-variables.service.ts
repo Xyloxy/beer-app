@@ -13,6 +13,8 @@ export class SettingsVariablesService {
 
   /**
    * amountToLoad
+   * 
+   * Returns all predefined amounts by which you can load items
    */
   public getAmountToLoad(): Array<number> {
     return this.amount_to_load
@@ -20,6 +22,8 @@ export class SettingsVariablesService {
 
   /**
    * getTypes
+   * 
+   * Returns all types with which objects can be filtered
    */
   public getTypes(): Array<String> {
     return this.type_filter

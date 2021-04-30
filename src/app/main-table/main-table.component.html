@@ -1,10 +1,10 @@
-<table mat-table [dataSource]="getBeersFiltered()" class="beer_table">
+<table mat-table [dataSource]="getBeersFiltered()" class="beer_table" [class]="color.getColorClass()">
     <ng-container matColumnDef="producer1">
         <th mat-header-cell *matHeaderCellDef>
-            <mat-form-field appearance="fill" class="header_margin">
+            <mat-form-field appearance="fill" class="header_cell_margin">
                 <mat-label>Select Producer</mat-label>
                 <mat-select [formControl]="producer1Control">
-                    <mat-option *ngFor="let producer of beerData.getProducers()" [value]="producer">
+                    <mat-option [class]="color.getColorClass()" *ngFor="let producer of beerData.getProducers()" [value]="producer">
                         {{producer}}
                     </mat-option>
                 </mat-select>
@@ -21,10 +21,10 @@
   
     <ng-container matColumnDef="producer2">
         <th mat-header-cell *matHeaderCellDef>
-            <mat-form-field appearance="fill" class="header_margin">
+            <mat-form-field appearance="fill" class="header_cell_margin">
                 <mat-label>Select Producer</mat-label>
                 <mat-select [formControl]="producer2Control">
-                    <mat-option *ngFor="let producer of beerData.getProducers()" [value]="producer">
+                    <mat-option [class]="color.getColorClass()" *ngFor="let producer of beerData.getProducers()" [value]="producer">
                         {{producer}}
                     </mat-option>
                 </mat-select>
@@ -41,10 +41,10 @@
   
     <ng-container matColumnDef="producer3">
         <th mat-header-cell *matHeaderCellDef>
-            <mat-form-field appearance="fill" class="header_margin">
+            <mat-form-field appearance="fill" class="header_cell_margin">
                 <mat-label>Select Producer</mat-label>
                 <mat-select [formControl]="producer3Control">
-                    <mat-option *ngFor="let producer of beerData.getProducers()" [value]="producer">
+                    <mat-option [class]="color.getColorClass()" *ngFor="let producer of beerData.getProducers()" [value]="producer">
                         {{producer}}
                     </mat-option>
                 </mat-select>

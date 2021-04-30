@@ -28,6 +28,11 @@ export class MainTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * getBeersFiltered()
+   * 
+   * Retrieves and returns filtered beers from BeerDataService
+   */
   getBeersFiltered(): Array<any> {
     return this.beerData.getBeersByProducers(
       [this.producer1Control.value, this.producer2Control.value, this.producer3Control.value]

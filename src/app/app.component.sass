@@ -1,1 +1,29 @@
+$secondary_color: #c2185b
+$dark_color: #212121
+$light_color: #fff
+$light_secondary_color: #ddd
 
+// Flex Spacer
+.spacer
+    flex: 1 1 auto
+
+// White mode class that allows to quickly change style of whole website
+// with change of main object
+// There's additional class .full_bg that triggers only when master object contains
+// class .white_mode
+.white_mode
+    background-color: $light_color !important
+    color: $dark_color !important
+    *
+        color: $dark_color !important
+
+        .full_bg
+            *
+                .mat-form-field-infix
+                    background-color: $light_color
+
+        .mat-cell
+            border-bottom-color: rgba(0, 0, 0, .12) !important
+
+        .mat-form-field-flex, .mat-option
+            background-color: $light_secondary_color !important

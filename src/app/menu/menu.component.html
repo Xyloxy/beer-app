@@ -7,25 +7,28 @@
     
 </mat-toolbar>
 
-<!-- Add Color change to menu -->
-<mat-menu class="menu" #menu>
+<mat-menu class="menu" [class]="color.getColorClass()" #menu>
     <button mat-menu-item (click)="color.swapColor()" *ngIf="color.isDarkMode()"><mat-icon>light_mode</mat-icon>Light mode</button>
-    <button mat-menu-item (click)="color.swapColor()" *ngIf="!color.isDarkMode()"><mat-icon>dark_mode</mat-icon>Dark mode</button><button mat-menu-item>
-        <mat-form-field>
+    
+    <button mat-menu-item (click)="color.swapColor()" *ngIf="!color.isDarkMode()"><mat-icon>dark_mode</mat-icon>Dark mode</button>
+    
+    <button mat-menu-item>
+        <mat-form-field class="full_bg">
             <mat-label>Beers to load</mat-label>
             <mat-select [formControl]="amountControl">
-                <mat-option *ngFor="let amount of settings.getAmountToLoad()" [value]="amount">
+                <mat-option [class]="color.getColorClass()" *ngFor="let amount of settings.getAmountToLoad()" [value]="amount">
                     {{amount}} per load
                 </mat-option>
             </mat-select>
             <mat-hint>{{amountControl.value?.sound}}</mat-hint>
         </mat-form-field>
     </button>
+
     <button mat-menu-item>
-        <mat-form-field>
+        <mat-form-field class="full_bg">
             <mat-label>Beer Filter</mat-label>
             <mat-select [formControl]="typeControl">
-                <mat-option *ngFor="let type of settings.getTypes()" [value]="type">
+                <mat-option [class]="color.getColorClass()" *ngFor="let type of settings.getTypes()" [value]="type">
                     {{type}}
                 </mat-option>
             </mat-select>

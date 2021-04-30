@@ -11,6 +11,8 @@ export class BeerCardComponent implements OnInit {
   @Input() beer: Beer
 
   constructor() {
+    // Creates basic entity to be filled from @Input
+    // (Required by Angular Strict)
     this.beer = {brewer: "", name: "", type: "", price_per_litre: 0, thumbnail_url: ""};
   }
 

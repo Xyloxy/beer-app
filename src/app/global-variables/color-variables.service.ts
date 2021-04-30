@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ColorVariablesService {
 
   // Contains currect theme of the website ("primary" / "secondary")
-  private current_color: string = "secondary"
+  private current_color: string = "primary" //"secondary"
 
   constructor() { }
 
@@ -44,5 +44,18 @@ export class ColorVariablesService {
    */
   public getColorMode(): string {
     return this.current_color;
+  }
+
+
+  /**
+   * getColorClass()
+   * 
+   * Returns class names for color change
+   */
+   public getColorClass(): string {
+    if (this.current_color == "primary") {
+      return "white_mode"
+    }
+    return ""
   }
 }
