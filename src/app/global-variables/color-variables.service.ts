@@ -3,20 +3,17 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class GlobalVariablesService {
+export class ColorVariablesService {
 
+  // Contains currect theme of the website ("primary" / "secondary")
   private current_color: string = "secondary"
 
-  public amount_filter: Array<number> = [15, 30, 45, 60]
-  public producer_filter: Array<any> = ["Firm1", "Firm2"]
-
-  constructor() {
-  }
+  constructor() { }
 
   /**
    * swapColor()
    * 
-   * Swaps color from Dark to Light mode
+   * Swaps color from Dark to Light mode ("primary" / "secondary")
    */
   public swapColor(): void {
     if (this.current_color == "secondary") {
@@ -43,9 +40,9 @@ export class GlobalVariablesService {
   /**
    * getColorMode()
    * 
-   * Returns current color mode
+   * Returns current_color value
    */
-   public getColorMode(): string {
+  public getColorMode(): string {
     return this.current_color;
   }
 }

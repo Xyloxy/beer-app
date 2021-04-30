@@ -11,27 +11,33 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatSelectModule } from '@angular/material/select'
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 
 import { MenuComponent } from './menu/menu.component';
 import { MainTableComponent } from './main-table/main-table.component';
+import { BeerCardComponent } from './beer-card/beer-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    MainTableComponent
+    MainTableComponent,
+    BeerCardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
     MatTableModule,
     MatMenuModule,
     MatSelectModule,
+    MatCardModule,
+    
     FormsModule,
     ReactiveFormsModule
   ],

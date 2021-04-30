@@ -1,21 +1,20 @@
-<mat-toolbar [color]="global.getColorMode()">
+<mat-toolbar [color]="color.getColorMode()">
     <span>Beer App</span>
     <span class="spacer"></span>
     <button mat-icon-button aria-label="Settings" [matMenuTriggerFor]="menu">
         <mat-icon>settings</mat-icon>
     </button>
+    
 </mat-toolbar>
 
 <!-- Add Color change to menu -->
-<mat-menu #menu>
-    <button mat-menu-item (click)="global.swapColor()" *ngIf="global.isDarkMode()"><mat-icon>light_mode</mat-icon>Light mode</button>
-    <button mat-menu-item (click)="global.swapColor()" *ngIf="!global.isDarkMode()"><mat-icon>dark_mode</mat-icon>Dark mode</button>
-    <!-- Move to table settings -->
-    <button mat-menu-item>
+<mat-menu class="menu" #menu>
+    <button mat-menu-item (click)="color.swapColor()" *ngIf="color.isDarkMode()"><mat-icon>light_mode</mat-icon>Light mode</button>
+    <button mat-menu-item (click)="color.swapColor()" *ngIf="!color.isDarkMode()"><mat-icon>dark_mode</mat-icon>Dark mode</button><button mat-menu-item>
         <mat-form-field>
             <mat-label>Beers to load</mat-label>
             <mat-select [formControl]="amountControl">
-                <mat-option *ngFor="let amount of global.amount_filter" [value]="amount">
+                <mat-option *ngFor="let amount of settings.getAmountToLoad()" [value]="amount">
                     {{amount}} per load
                 </mat-option>
             </mat-select>
@@ -24,14 +23,13 @@
     </button>
     <button mat-menu-item>
         <mat-form-field>
-            <mat-label>Beer Firm Filter</mat-label>
-            <mat-select [formControl]="firmControl">
-                <mat-option value="0">None</mat-option>
-                <mat-option *ngFor="let producer of global.producer_filter" [value]="producer">
-                    {{producer}}
+            <mat-label>Beer Filter</mat-label>
+            <mat-select [formControl]="typeControl">
+                <mat-option *ngFor="let type of settings.getTypes()" [value]="type">
+                    {{type}}
                 </mat-option>
             </mat-select>
-            <mat-hint>{{firmControl.value?.sound}}</mat-hint>
+            <mat-hint>{{typeControl.value?.sound}}</mat-hint>
         </mat-form-field>
     </button>
 </mat-menu>

@@ -1,20 +1,20 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { GlobalVariablesService } from '../global-variables/global-variables.service';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { ColorVariablesService } from '../global-variables/color-variables.service';
+import { SettingsVariablesService } from '../global-variables/settings-variables.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.sass'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./menu.component.sass']
 })
 export class MenuComponent implements OnInit {
   amountControl = new FormControl('', Validators.required);
-  firmControl = new FormControl('', Validators.required);
+  typeControl = new FormControl('', Validators.required);
 
-  constructor(public global: GlobalVariablesService) {
+  constructor(public settings: SettingsVariablesService, public color: ColorVariablesService) {
     this.amountControl.setValue(15)
-    this.firmControl.setValue("0")
+    this.typeControl.setValue(this.settings.getTypes()[0])
   }
 
   ngOnInit(): void {
