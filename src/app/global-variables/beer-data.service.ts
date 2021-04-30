@@ -165,7 +165,37 @@ export class BeerDataService {
           return JSON.stringify(item) != JSON.stringify([undefined, undefined, undefined])
         }
       );
+    
+    toReturn = this.sortItems(toReturn)
 
+    // Check is needed to not let angular execute this
+    // code by accident and block loading of new objects
+    this.previous_limits = limits
+
+    this.previous_producers = producers
+    this.previous_filter = this.settings.getCurrentTypeFilter()
+    this.previous_beers_filtered = toReturn
+
+    return toReturn
+  }
+
+  /**
+   * getLimitsOverride()
+   * 
+   * Returns amount of left items that user can load
+   * 
+   * @returns Array<number>
+   */
+  public getLimitsOverride(): Array<number> {
+    return this.limits_override
+  }
+
+  /**
+   * sortItems()
+   * 
+   * @returns Array<Array<Beer | undefined>> 
+   */
+  public sortItems(toReturn: Array<Array<Beer | undefined>>): Array<Array<Beer | undefined>> {
     let collumns: Array<Array<Beer | undefined>> = [[], [], []]
 
     for (let i = 0; i < toReturn.length; i++) {
@@ -240,29 +270,7 @@ export class BeerDataService {
     for (let i = 0; i < Math.floor(Math.max(collumns[0].length, collumns[1].length, collumns[2].length) / 2); i++) {
       toReturn.push([collumns[0][i], collumns[1][i], collumns[2][i]])
     }
-    
-    // Check is needed to not let angular execute this
-    // code by accident and block loading of new objects
-    if (JSON.stringify(this.previous_beers_filtered) == JSON.stringify(toReturn)) {
-      console.log(this.previous_limits, limits, this.previous_limits == limits)
-      this.previous_limits = limits
-    }
-
-    this.previous_producers = producers
-    this.previous_filter = this.settings.getCurrentTypeFilter()
-    this.previous_beers_filtered = toReturn
 
     return toReturn
-  }
-
-  /**
-   * getLimitsOverride()
-   * 
-   * Returns amount of left items that user can load
-   * 
-   * @returns Array<number>
-   */
-  public getLimitsOverride(): Array<number> {
-    return this.limits_override
   }
 }
