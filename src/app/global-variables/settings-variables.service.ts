@@ -16,6 +16,7 @@ export class SettingsVariablesService {
     let data: any = this.local.loadOptions("settings")
     if (data != undefined) {
       this.current_to_load = data.amount
+      this.current_type_filter = data.filter
     }
   }
 
