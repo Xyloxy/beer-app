@@ -168,10 +168,7 @@ export class BeerDataService {
     
     toReturn = this.sortItems(toReturn)
 
-    // Check is needed to not let angular execute this
-    // code by accident and block loading of new objects
     this.previous_limits = limits
-
     this.previous_producers = producers
     this.previous_filter = this.settings.getCurrentTypeFilter()
     this.previous_beers_filtered = toReturn

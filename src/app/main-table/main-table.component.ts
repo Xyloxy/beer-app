@@ -70,9 +70,10 @@ export class MainTableComponent implements OnInit {
    * @return Array
    */
   getBeersFiltered(): Array<Array<Beer | undefined>> {
+    // For some reason accessing each element of array separately solves issue of table not updating
     return this.beerData.getBeersFiltered(
       [this.producer1Control.value, this.producer2Control.value, this.producer3Control.value],
-      this.limits
+      [this.limits[0], this.limits[1], this.limits[2]]
     )
   }
   
