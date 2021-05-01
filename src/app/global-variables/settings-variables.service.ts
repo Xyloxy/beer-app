@@ -38,7 +38,7 @@ export class SettingsVariablesService {
    * 
    * @returns number
    */
-   public getCurrentAmountToLoad(): number {
+  public getCurrentAmountToLoad(): number {
     return this.current_to_load
   }
 
@@ -67,7 +67,7 @@ export class SettingsVariablesService {
    * 
    * @returns String
    */
-   public getCurrentTypeFilter(): String {
+  public getCurrentTypeFilter(): String {
     return this.current_type_filter
   }
 
@@ -98,5 +98,29 @@ export class SettingsVariablesService {
    */
   public getTypes(): Array<String> {
     return this.type_filter
+  }
+  
+  /**
+   * setCurrentAmountToLoadWithoutSave()
+   * 
+   * Sets current amounts by which you load items
+   * without saving (testing purposes)
+   * 
+   * @returns void
+   */
+  public setCurrentAmountToLoadWithoutSave(n: number): void {
+    this.current_to_load = n
+  }
+
+  /**
+   * setCurrentTypeFilterWithoutSave()
+   * 
+   * Sets current type filter
+   * without saving (testing purposes)
+   * 
+   * @returns void
+   */
+  public setCurrentTypeFilterWithoutSave(n: String): void {
+    this.current_type_filter = n
   }
 }

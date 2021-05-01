@@ -90,6 +90,20 @@ export class MainTableComponent implements OnInit {
   }
 
   /**
+   * addLimitWithoutCompesation(index)
+   * 
+   * Adds next chosen amount to limits
+   * without compensating for current amount
+   * 
+   * @returns void
+   */
+   addLimitWithoutCompesation(index: number): void {
+    let lim = this.limits
+    lim[index] += this.settings.getCurrentAmountToLoad()
+    this.limits = lim
+  }
+
+  /**
    * getAmountToAdd(index)
    * 
    * Returns amount to add based on Math.min(amountLeft, loadAmount)

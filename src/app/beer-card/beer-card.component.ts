@@ -34,5 +34,4 @@ export class BeerCardComponent implements OnInit {
       icon.classList.add("icon_fullscreen")
     }
   }
-
 }

@@ -13,7 +13,7 @@ export class MenuComponent implements OnInit {
   typeControl = new FormControl('', Validators.required);
 
   constructor(public settings: SettingsVariablesService, public color: ColorVariablesService) {
-    this.amountControl.setValue(settings.getCurrentAmountToLoad())
+    this.amountControl.setValue(this.settings.getCurrentAmountToLoad())
     this.typeControl.setValue(this.settings.getCurrentTypeFilter())
     
     this.amountControl.valueChanges.subscribe(value => {
